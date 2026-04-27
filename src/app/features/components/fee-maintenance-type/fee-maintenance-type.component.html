@@ -1,0 +1,152 @@
+<div class="fee-maintenance">
+  <!-- Top summary card -->
+  <div class="fm-summary-card fm-layout-three-column">
+    <!-- LEFT COLUMN: inputs -->
+    <div class="fm-form-column">
+      <!-- 1. Months -->
+      <div class="fm-field-row">
+        <label for="reversalMonths" class="fm-field-label">
+          1. Which month(s) are we reversing fees?
+        </label>
+
+        <div class="fm-month-range">
+          <!-- FROM -->
+          <input
+            class="fm-field-input"
+            type="month"
+            [(ngModel)]="fromMonth"
+            name="fromMonth"
+            [max]="toMonth || currentMonth"
+          />
+
+          <span class="fm-range-separator">to</span>
+
+          <!-- TO -->
+          <input
+            class="fm-field-input"
+            type="month"
+            [(ngModel)]="toMonth"
+            name="toMonth"
+            [min]="fromMonth"
+            [max]="currentMonth"
+          />
+        </div>
+      </div>
+
+      <!-- 2. Amount -->
+      <div class="fm-field-row">
+        <label for="reversalAmount" class="fm-field-label">
+          2. How much of the monthly DMP fee do you want to reverse?
+        </label>
+        <div class="fm-currency-input">
+          <span class="fm-currency-prefix">$</span>
+          <input
+            id="reversalAmount"
+            class="fm-field-input fm-field-input--currency"
+            type="number"
+            min="0"
+            step="0.01"
+            [(ngModel)]="reversalAmount"
+            name="reversalAmount"
+          />
+        </div>
+      </div>
+
+      <!-- 3. Reason -->
+      <div class="fm-field-row">
+        <label for="reversalReason" class="fm-field-label">
+          3. Reason for Reversal
+        </label>
+        <textarea
+          id="reversalReason"
+          class="fm-field-textarea"
+          rows="4"
+          maxlength="500"
+          [(ngModel)]="reversalReason"
+          name="reversalReason"
+          placeholder="Enter reason here"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- MIDDLE COLUMN: Compliance Fee Reversal Preview -->
+    <div class="fm-preview-column">
+      <div class="fm-preview-card">
+        <div class="fm-preview-title">Compliance Fee Reversal Preview</div>
+        <div class="fm-preview-row">
+          <span class="fm-preview-label">From:</span>
+          <span class="fm-preview-value">
+            {{ fromMonth | date: "MMM y" : "UTC" : "en-US" }}
+          </span>
+        </div>
+        <div class="fm-preview-row">
+          <span class="fm-preview-label">To:</span>
+          <span class="fm-preview-value">
+            {{ toMonth | date: "MMM y" : "UTC" : "en-US" }}
+          </span>
+        </div>
+        <div class="reversed-month">
+          <span>Fee to be Reversed for Each Month</span>
+          <span>-</span>
+        </div>
+        <div class="fm-preview-row">
+          <span class="fm-preview-label">Estimated Total Reversal:</span>
+          <span class="fm-preview-value fm-preview-value--amount">
+            {{ estimatedReversalAmount | currency: "USD" : "symbol" : "1.2-2" }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Remaining Fees That Can Be Reversed -->
+    <div class="fm-remaining-column">
+      <div class="fm-preview-card fm-preview-card--remaining">
+        <div class="reversed-fee">
+          <div class="fm-preview-title">
+            Remaining Fees That Can Be Reversed
+          </div>
+          <div
+            class="fm-preview-remaining-amount"
+            [ngClass]="{
+              'fm-preview-remaining-amount--positive':
+                remainingFeesThatCanBeReversed > 0,
+              'fm-preview-remaining-amount--zero-or-negative':
+                remainingFeesThatCanBeReversed <= 0,
+            }"
+          >
+            {{ 350 | currency: "USD" : "symbol" : "1.2-2" }}
+          </div>
+        </div>
+        <div class="reversed-fee">
+          <div class="fm-preview-title">Total DMP Fees Paid To-date</div>
+          <div
+            class="fm-preview-remaining-amount"
+            [ngClass]="{
+              'fm-preview-remaining-amount--positive':
+                remainingFeesThatCanBeReversed > 0,
+              'fm-preview-remaining-amount--zero-or-negative':
+                remainingFeesThatCanBeReversed <= 0,
+            }"
+          >
+            {{ 350 | currency: "USD" : "symbol" : "1.2-2" }}
+          </div>
+        </div>
+
+        <div class="reversed-fee">
+          <div class="fm-preview-title">Total Fee Reversed</div>
+          <div
+            class="fm-preview-remaining-amount"
+            [ngClass]="{
+              'fm-preview-remaining-amount--positive':
+                remainingFeesThatCanBeReversed > 0,
+              'fm-preview-remaining-amount--zero-or-negative':
+                remainingFeesThatCanBeReversed <= 0,
+            }"
+          >
+            {{ 350 | currency: "USD" : "symbol" : "1.2-2" }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
