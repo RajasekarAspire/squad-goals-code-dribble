@@ -1,0 +1,297 @@
+.fee-maintenance {
+  border-top: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Header */
+.fm-header {
+  margin-bottom: 16px;
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+/* Summary card container (if you add content later) */
+.fm-summary-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+/* Fee Maintenance Type row */
+.fm-type-row {
+  margin: 8px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fm-type-label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Generic field row layout */
+.fm-field-row {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fm-field-label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.fm-field-input,
+.fm-field-textarea {
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  background-color: #ffffff;
+  color: #333;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  font-family: inherit;
+  width: 55%;
+}
+
+.fm-field-input:focus,
+.fm-field-textarea:focus {
+  border-color: #6a1b9a;
+  box-shadow: 0 0 0 1px rgba(106, 27, 154, 0.15);
+}
+
+/* Month picker */
+.fm-field-input[type="month"] {
+  max-width: 220px;
+}
+
+/* Currency input styling */
+.fm-currency-input {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  background-color: #ffffff;
+  overflow: hidden;
+  max-width: 100px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.fm-currency-input:focus-within {
+  border-color: #6a1b9a;
+  box-shadow: 0 0 0 1px rgba(106, 27, 154, 0.15);
+}
+
+.fm-currency-prefix {
+  padding: 0 8px;
+  font-size: 14px;
+  color: #555;
+  background-color: #f5f5f5;
+  border-right: 1px solid #d0d0d0;
+}
+
+.fm-field-input--currency {
+  border: none;
+  border-radius: 0;
+  padding-left: 8px;
+}
+
+/* Helper text and char counter */
+.fm-field-help {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #777;
+}
+
+.fm-char-counter {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #777;
+  align-self: flex-end;
+}
+
+/* Table styles */
+.fm-table-wrapper {
+  margin-top: 8px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.fm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th,
+  td {
+    padding: 8px 6px;
+    text-align: left;
+  }
+
+  thead th {
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  tbody td {
+    color: #444;
+  }
+}
+
+.fm-status {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fm-status--pending {
+  background-color: #fff6e5;
+  color: #a36b00;
+}
+
+/* Footer buttons */
+.fm-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.fm-btn {
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  min-width: 90px;
+}
+
+.fm-btn-secondary {
+  background-color: #ffffff;
+  color: #555;
+  border-color: #d0d0d0;
+}
+
+.fm-btn-primary {
+  background-color: #6a1b9a;
+  color: #ffffff;
+  border-color: #6a1b9a;
+}
+
+.fm-preview-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.fm-preview-card {
+  flex: 1 1 260px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 14px;
+  border: 1px solid #e0e0e0;
+}
+
+.fm-preview-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+  background-color: gainsboro;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.fm-preview-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+/* 2-column layout inside the summary card */
+.fm-layout-two-column {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fm-summary-card.fm-layout-three-column {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Card styling (reuse from before) */
+.fm-preview-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 12px 14px;
+  border: 1px solid #e0e0e0;
+}
+
+.fm-preview-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.fm-preview-label {
+  color: #666;
+}
+.fm-preview-value--amount {
+  color: #1a6f3c;
+}
+
+.fm-preview-remaining-amount {
+  font-size: 18px;
+}
+
+.fm-preview-remaining-help {
+  font-size: 11px;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* Optional responsive stacking */
+@media (max-width: 992px) {
+  .fm-summary-card.fm-layout-three-column {
+    flex-direction: column;
+  }
+}
+
+.reversed-fee{
+    padding: 10px;
+}
+
+.reversed-month{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}

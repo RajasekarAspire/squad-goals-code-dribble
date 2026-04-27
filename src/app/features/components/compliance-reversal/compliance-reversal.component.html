@@ -1,0 +1,107 @@
+<div class="fee-maintenance">
+
+  <!-- Header -->
+  <div class="fm-header">
+    <h2>Fee Maintenance</h2>
+  </div>
+
+  <!-- Top summary card -->
+  <div class="fm-summary-card">
+    <div class="fm-summary-row">
+      <div class="fm-summary-item">
+        <div class="fm-summary-label">Total DMP Fees</div>
+        <div class="fm-summary-value">$2,000.00</div>
+      </div>
+
+      <div class="fm-summary-item">
+        <div class="fm-summary-label">Remaining Fees that can be Reversed</div>
+        <div
+          class="fm-summary-value"
+          [ngClass]="{
+            'fm-summary-value--positive': remainingFeesThatCanBeReversed > 0,
+            'fm-summary-value--zero-or-negative':
+              remainingFeesThatCanBeReversed <= 0
+          }"
+        >
+          {{ remainingFeesThatCanBeReversed | currency:'USD':'symbol':'1.2-2' }}
+        </div>
+      </div>
+    </div>
+
+    <div class="fm-summary-row">
+      <div class="fm-summary-item">
+        <div class="fm-summary-label">Total Fees Reversed</div>
+        <div class="fm-summary-value">$100.00</div>
+      </div>
+
+      <div class="fm-summary-item">
+        <div class="fm-summary-label">
+          Total Amount of GreenPath Cash Deposits for the Year
+        </div>
+        <div class="fm-summary-value">$0.00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fee Maintenance Type (dropdown row) -->
+  <div class="fm-type-row">
+    <label class="fm-type-label" for="feeMaintenanceType">
+      Fee Maintenance Type
+    </label>
+
+    <div class="fm-select-wrapper">
+      <!-- Fake "MUI-like" select look -->
+      <select
+        id="feeMaintenanceType"
+        class="fm-select"
+        [(ngModel)]="selectedFeeMaintenanceType"
+        (ngModelChange)="onFeeMaintenanceTypeChange($event)"
+      >
+        <option [ngValue]="null" disabled>Please select</option>
+
+        <!-- Only show Compliance Fee Reversal Request when allowed -->
+        <option *ngFor="let type of feeMaintenanceTypes" [ngValue]="type">
+          {{ type }}
+        </option>
+      </select>
+      <span class="fm-select-arrow">&#9662;</span>
+    </div>
+  </div>
+
+  <div *ngIf="selectedFeeMaintenanceType == 'Compliance Fee Reversal Request'">
+      <app-fee-maintenance-type></app-fee-maintenance-type>
+  </div>
+
+  <!-- Table area placeholder (matches screenshot lower section) -->
+  <div class="fm-table-wrapper">
+    <table class="fm-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Reasons</th>
+          <th>Status</th>
+          <th>Date Approved</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example static row -->
+        <tr>
+          <td>01/15/2023</td>
+          <td>Reversal</td>
+          <td>$55.00</td>
+          <td>-</td>
+          <td class="fm-status fm-status--pending">Pending</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer buttons -->
+  <div class="fm-footer">
+    <button class="fm-btn fm-btn-secondary">Cancel</button>
+    <button class="fm-btn fm-btn-primary">Submit</button>
+  </div>
+</div>
